@@ -1,8 +1,9 @@
 <template>
   <q-page class="home_page">
+    <!-- header y buscador -->
     <q-parallax :height="455">
       <template v-slot:media>
-        <img src="/images/bg.png" />
+        <img src="/images/bg.png" alt="Background Image" />
       </template>
 
       <template v-slot:content="scope">
@@ -14,16 +15,24 @@
             right: 0,
           }"
         >
-          <img class="morty_letters" src="/images/rick-title.png" />
+          <img
+            class="morty_letters"
+            src="/images/rick-title.png"
+            alt="Morty Header Image"
+          />
           <input-character-searcher />
         </div>
       </template>
     </q-parallax>
+    <!-- header y buscador -->
 
+    <!-- filtrado de generos -->
     <div class="tabs-section">
       <tabs-filter-character />
     </div>
+    <!-- filtrado de generos -->
 
+    <!-- body : cartas -->
     <div class="body">
       <div class="flex flex-center card_section">
         <div class="row container">
@@ -38,19 +47,23 @@
           >
             <small-home-card
               :character="character"
-              @isSelected="onIsSelected"
+              @is-selected="onIsSelected"
             />
           </div>
         </div>
       </div>
     </div>
+    <!-- body : cartas -->
 
+    <!-- footer -->
     <q-parallax :height="140">
       <template v-slot:media>
-        <img src="/images/footer.png" />
+        <img src="/images/footer.png" lt="Morty footer" />
       </template>
     </q-parallax>
+    <!-- footer -->
 
+    <!-- loading -->
     <q-circular-progress
       v-if="loading"
       indeterminate
@@ -59,6 +72,7 @@
       color="primary"
       class="q-ma-md"
     />
+    <!-- loading -->
   </q-page>
 </template>
 
