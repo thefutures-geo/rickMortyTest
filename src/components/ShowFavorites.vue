@@ -13,21 +13,9 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import { defineComponent } from "vue";
-import { storeToRefs } from "pinia";
-import { useDashboardStore } from "stores/dashboard";
 
 export default defineComponent({
   name: "TabsFilterCharacter",
-  setup() {
-    const tab = ref("All");
-    const store = useDashboardStore();
-    const { loading, rickAndMortyCharacters } = storeToRefs(store);
-
-    return {
-      tab,
-    };
-  },
 });
 </script>

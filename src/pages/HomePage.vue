@@ -35,7 +35,7 @@
     <!-- body : cartas -->
     <div class="body">
       <div class="flex flex-center card_section">
-        <div class="row container">
+        <div v-if="rickAndMortyCharacters.length > 0" class="row container">
           <div class="col-xs-12 col-sm-12 col-md-12 column_card">
             <show-favorites />
           </div>
@@ -50,6 +50,9 @@
               @is-selected="onIsSelected"
             />
           </div>
+        </div>
+        <div v-else-if="rickAndMortyCharacters.length === 0">
+          <delete-filters-message />
         </div>
       </div>
     </div>
@@ -86,6 +89,7 @@ import InputCharacterSearcher from "src/components/InputCharacterSearcher.vue";
 import SmallHomeCard from "src/components/SmallHomeCard.vue";
 import TabsFilterCharacter from "src/components/TabsFilterCharacter.vue";
 import ShowFavorites from "src/components/ShowFavorites.vue";
+import DeleteFiltersMessage from "src/components/DeleteFiltersMessage.vue";
 
 export default defineComponent({
   name: "HomePage",
@@ -94,6 +98,7 @@ export default defineComponent({
     SmallHomeCard,
     TabsFilterCharacter,
     ShowFavorites,
+    DeleteFiltersMessage,
   },
   setup() {
     const $q = useQuasar();

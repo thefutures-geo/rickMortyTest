@@ -1,5 +1,6 @@
 <template>
   <q-dialog data-cy="details-card" ref="dialog" @hide="onDialogHide">
+    <!-- imagen de header -->
     <q-card class="q-dialog-plugin home_page">
       <q-parallax :height="220">
         <template v-slot:media>
@@ -17,7 +18,9 @@
           ></div>
         </template>
       </q-parallax>
+      <!-- imagen de header -->
 
+      <!-- Avatar y datos de personaje -->
       <div class="column items-center container details_header">
         <div class="avatar-container">
           <img :src="selectedCharacter.image" />
@@ -41,8 +44,10 @@
           {{ selectedCharacter.species }}
         </div>
       </div>
+      <!-- Avatar y datos de personaje -->
 
       <div class="body">
+        <!-- información general -->
         <div class="information_container">
           <div class="text-h5 q-mt-md text-weight-medium text-dark-grey">
             Información
@@ -82,7 +87,9 @@
             >
           </div>
         </div>
+        <!-- información general -->
 
+        <!-- Episodios -->
         <div class="information_container">
           <div class="text-h5 q-mt-md text-weight-medium text-dark-grey">
             Episodios
@@ -115,7 +122,9 @@
             </div>
           </div>
         </div>
+        <!-- Episodios -->
 
+        <!-- personajes -->
         <div
           v-if="rickAndMortyCharacters.length > 0"
           class="information_container"
@@ -140,6 +149,7 @@
           </div>
         </div>
       </div>
+      <!-- personajes -->
     </q-card>
   </q-dialog>
 </template>

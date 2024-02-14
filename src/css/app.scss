@@ -167,6 +167,14 @@ $lightGrey: #f2f2f2;
       color: $darkGrey;
     }
 
+    .delete_filters {
+      .q-btn {
+        position: relative;
+        bottom: auto;
+        left: auto;
+      }
+    }
+
     // Imagen de la tarjeta
     img {
       width: 140px;
