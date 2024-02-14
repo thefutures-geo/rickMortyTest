@@ -35,16 +35,19 @@ export default defineComponent({
     let typingTimer;
     let doneTypingInterval = 1000;
 
+    // this functions is for user typing
     const handleInput = () => {
       loading.value = true;
       clearTimeout(typingTimer);
       typingTimer = setTimeout(doneTyping, doneTypingInterval);
     };
 
+    // user finish typing
     const doneTyping = () => {
       callToApi();
     };
 
+    // refresh data
     const callToApi = () => {
       getCharacterInfo({
         querySearchCharacterName: querySearchCharacterName.value,

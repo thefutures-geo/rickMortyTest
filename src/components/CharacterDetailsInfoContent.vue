@@ -1,6 +1,6 @@
 <template>
   <q-dialog data-cy="details-card" ref="dialog" @hide="onDialogHide">
-    <!-- imagen de header -->
+    <!-- Header image -->
     <q-card class="q-dialog-plugin home_page">
       <q-parallax :height="220">
         <template v-slot:media>
@@ -18,9 +18,9 @@
           ></div>
         </template>
       </q-parallax>
-      <!-- imagen de header -->
+      <!-- Header image -->
 
-      <!-- Avatar y datos de personaje -->
+      <!-- Personal details -->
       <div class="column items-center container details_header">
         <div class="avatar-container">
           <img :src="selectedCharacter.image" />
@@ -44,10 +44,10 @@
           {{ selectedCharacter.species }}
         </div>
       </div>
-      <!-- Avatar y datos de personaje -->
+      <!-- Personal details -->
 
       <div class="body">
-        <!-- información general -->
+        <!-- General information -->
         <div class="information_container">
           <div class="text-h5 q-mt-md text-weight-medium text-dark-grey">
             Información
@@ -87,9 +87,9 @@
             >
           </div>
         </div>
-        <!-- información general -->
+        <!-- General information -->
 
-        <!-- Episodios -->
+        <!-- Chapters -->
         <div class="information_container">
           <div class="text-h5 q-mt-md text-weight-medium text-dark-grey">
             Episodios
@@ -122,9 +122,9 @@
             </div>
           </div>
         </div>
-        <!-- Episodios -->
+        <!-- Chapters -->
 
-        <!-- personajes -->
+        <!-- Characters -->
         <div
           v-if="rickAndMortyCharacters.length > 0"
           class="information_container"
@@ -149,7 +149,7 @@
           </div>
         </div>
       </div>
-      <!-- personajes -->
+      <!-- Characters -->
     </q-card>
   </q-dialog>
 </template>
@@ -172,10 +172,12 @@ export default defineComponent({
     const store = useDashboardStore();
     const { selectedCharacter, rickAndMortyCharacters } = storeToRefs(store);
 
+    // emit hide dialog
     const onDialogHide = () => {
       ctx.emit("hide");
     };
 
+    // update selected character in store
     const updateSelectedCharacter = (character) => {
       selectedCharacter.value = character;
     };

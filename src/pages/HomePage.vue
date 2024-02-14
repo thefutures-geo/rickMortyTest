@@ -106,10 +106,12 @@ export default defineComponent({
     const { loading, rickAndMortyCharacters, selectedCharacter } =
       storeToRefs(store);
 
+    // update character in store
     const updateSelectedCharacter = (character) => {
       selectedCharacter.value = character;
     };
 
+    // open details dialog
     const openCharacterDetailsDialog = () => {
       $q.dialog({
         component: CharacterDetailsInfoContent,

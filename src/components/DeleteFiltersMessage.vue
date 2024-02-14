@@ -34,6 +34,7 @@ export default defineComponent({
       querySearchCharacterGender,
     } = storeToRefs(store);
 
+    // clear filters and reset data
     const deleteFilters = () => {
       querySearchCharacterName.value = "";
       querySearchCharacterGender.value = "All";
@@ -41,6 +42,7 @@ export default defineComponent({
       callToApi();
     };
 
+    // call to api
     const callToApi = () => {
       getCharacterInfo({
         querySearchCharacterName: querySearchCharacterName.value,

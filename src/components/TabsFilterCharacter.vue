@@ -30,6 +30,7 @@ export default defineComponent({
       querySearchCharacterName,
     } = storeToRefs(store);
 
+    // refresh data
     const callToApi = () => {
       loading.value = true;
       getCharacterInfo({
