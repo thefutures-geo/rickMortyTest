@@ -17,9 +17,8 @@
 
       <q-separator vertical />
       <q-card-section data-cy="small-card" @click="onIsSelected" class="info">
-        <div class="text-caption text-grey">
+        <div data-cy="small-card-status" class="text-caption text-grey">
           <q-badge
-            data-cy="small-card-status"
             rounded
             :color="character.status === 'Alive' ? 'green' : 'red'"
           />
@@ -42,10 +41,6 @@
 
 <script>
 import { defineComponent } from "vue";
-/* import { useQuasar } from "quasar";
-import { useDashboardStore } from "stores/dashboard";
-import { storeToRefs } from "pinia";
-import CharacterDetailsInfoContent from "./CharacterDetailsInfoContent.vue"; */
 
 export default defineComponent({
   name: "SmallHomeCard",

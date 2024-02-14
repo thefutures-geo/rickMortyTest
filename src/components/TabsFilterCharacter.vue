@@ -1,6 +1,6 @@
 <template>
   <q-tabs
-    v-model="tab"
+    v-model="querySearchCharacterGender"
     active-color="secondary"
     class="bg-grey-3"
     @click="callToApi"
@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import { defineComponent } from "vue";
 import { getCharacterInfo } from "src/api/apiService";
 import { storeToRefs } from "pinia";
@@ -23,20 +22,24 @@ import { useDashboardStore } from "stores/dashboard";
 export default defineComponent({
   name: "TabsFilterCharacter",
   setup() {
-    const tab = ref("All");
     const store = useDashboardStore();
-    const { loading, rickAndMortyCharacters } = storeToRefs(store);
+    const {
+      loading,
+      rickAndMortyCharacters,
+      querySearchCharacterGender,
+      querySearchCharacterName,
+    } = storeToRefs(store);
 
     const callToApi = () => {
       loading.value = true;
-      const value = tab.value !== "All" ? tab.value : "";
-      getCharacterInfo("gender", value)
+      getCharacterInfo({
+        querySearchCharacterName: querySearchCharacterName.value,
+        querySearchCharacterGender: querySearchCharacterGender.value,
+      })
         .then((response) => {
-          console.log("respondió!", response.data.results);
           rickAndMortyCharacters.value = response.data.results;
         })
         .catch((error) => {
-          console.error("Error al recuperar los personajes:", error);
           rickAndMortyCharacters.value = [];
         })
         .finally(() => {
@@ -45,7 +48,7 @@ export default defineComponent({
     };
 
     return {
-      tab,
+      querySearchCharacterGender,
       callToApi,
     };
   },

@@ -24,21 +24,32 @@
       <tabs-filter-character />
     </div>
 
-    <!-- <div class="tabs-section">
-      <tabs-filter-character />
-    </div> -->
+    <div class="body">
+      <div class="flex flex-center card_section">
+        <div class="row container">
+          <div class="col-xs-12 col-sm-12 col-md-12 column_card">
+            <show-favorites />
+          </div>
 
-    <div class="flex flex-center card_section">
-      <div class="row container">
-        <div
-          v-for="character in rickAndMortyCharacters"
-          :key="character.id"
-          class="col-xs-12 col-sm-12 col-md-4 column_card"
-        >
-          <small-home-card :character="character" @isSelected="onIsSelected" />
+          <div
+            v-for="character in rickAndMortyCharacters"
+            :key="character.id"
+            class="col-xs-12 col-sm-12 col-md-4 column_card"
+          >
+            <small-home-card
+              :character="character"
+              @isSelected="onIsSelected"
+            />
+          </div>
         </div>
       </div>
     </div>
+
+    <q-parallax :height="140">
+      <template v-slot:media>
+        <img src="/images/footer.png" />
+      </template>
+    </q-parallax>
 
     <q-circular-progress
       v-if="loading"
@@ -60,6 +71,7 @@ import CharacterDetailsInfoContent from "src/components/CharacterDetailsInfoCont
 import InputCharacterSearcher from "src/components/InputCharacterSearcher.vue";
 import SmallHomeCard from "src/components/SmallHomeCard.vue";
 import TabsFilterCharacter from "src/components/TabsFilterCharacter.vue";
+import ShowFavorites from "src/components/ShowFavorites.vue";
 
 export default defineComponent({
   name: "HomePage",
@@ -67,6 +79,7 @@ export default defineComponent({
     InputCharacterSearcher,
     SmallHomeCard,
     TabsFilterCharacter,
+    ShowFavorites,
   },
   setup() {
     const $q = useQuasar();
