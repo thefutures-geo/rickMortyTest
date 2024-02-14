@@ -1,12 +1,4 @@
 import SmallHomeCard from "../SmallHomeCard.vue";
-import { createPinia, setActivePinia } from "pinia";
-import useStore from "../../stores/index.js";
-
-setActivePinia(createPinia());
-
-const store = useStore();
-
-Cypress.Commands.add("getStore", () => store);
 
 const testingCharacter = {
   id: 1,
@@ -39,24 +31,26 @@ describe("SmallHomeCard", () => {
     });
   });
 
-  it("Click the card and show dialog", () => {
+  it("Card must be selected without problems", () => {
     cy.dataCy("small-card").click();
-    cy.dataCy("details-card").should("be.visible");
   });
 
-  it("Dialog shows character details", () => {
-    /* cy.dataCy("small-card-name").should("contain", testingCharacter.name);
+  it("Card image must be selected without problems", () => {
+    cy.dataCy("small-card-image").click();
+  });
+
+  it("Card must show the correct information", () => {
+    cy.dataCy("small-card-image").should(
+      "have.attr",
+      "src",
+      testingCharacter.image
+    );
+
     cy.dataCy("small-card-status").should(
       "contain",
       `${testingCharacter.status} - ${testingCharacter.species}`
     );
-    cy.dataCy("small-card-location").should(
-      "contain",
-      testingCharacter.location.name
-    ); */
-  });
 
-  it("Updates selectedCharacter in store on click", () => {
-    console.log("que", store.getActivePinia);
+    cy.dataCy("small-card-name").should("contain", testingCharacter.name);
   });
 });

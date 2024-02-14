@@ -1,6 +1,7 @@
 <template>
   <q-card flat bordered class="small-principal-card">
     <q-card-section horizontal>
+      <!-- image -->
       <img
         data-cy="small-card-image"
         @click="onIsSelected"
@@ -14,21 +15,25 @@
         size="sm"
         icon="star"
       />
+      <!-- image -->
 
+      <!-- content -->
       <q-separator vertical />
       <q-card-section data-cy="small-card" @click="onIsSelected" class="info">
-        <div class="text-caption text-grey">
+        <!-- status -->
+        <div data-cy="small-card-status" class="text-caption text-grey">
           <q-badge
-            data-cy="small-card-status"
             rounded
             :color="character.status === 'Alive' ? 'green' : 'red'"
           />
           {{ character.status }} -
           {{ character.species }}
         </div>
+        <!-- name -->
         <div data-cy="small-card-name" class="text-subtitle2">
           {{ character.name }}
         </div>
+        <!-- location -->
         <div class="text-caption text-grey">Last known location:</div>
         <div data-cy="small-card-location" class="text-subtitle3">
           {{ character.location.name }}
@@ -37,15 +42,12 @@
         <div class="text-subtitle3">Never Ricking Morty</div>
       </q-card-section>
     </q-card-section>
+    <!-- content -->
   </q-card>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-/* import { useQuasar } from "quasar";
-import { useDashboardStore } from "stores/dashboard";
-import { storeToRefs } from "pinia";
-import CharacterDetailsInfoContent from "./CharacterDetailsInfoContent.vue"; */
 
 export default defineComponent({
   name: "SmallHomeCard",
@@ -57,6 +59,7 @@ export default defineComponent({
     },
   },
   setup(props, ctx) {
+    // Function to emit isSelected event
     const onIsSelected = () => {
       ctx.emit("isSelected", props.character);
     };

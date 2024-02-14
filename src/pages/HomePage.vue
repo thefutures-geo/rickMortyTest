@@ -1,8 +1,9 @@
 <template>
   <q-page class="home_page">
+    <!-- header y buscador -->
     <q-parallax :height="455">
       <template v-slot:media>
-        <img src="/images/bg.png" />
+        <img src="/images/bg.png" alt="Background Image" />
       </template>
 
       <template v-slot:content="scope">
@@ -14,32 +15,55 @@
             right: 0,
           }"
         >
-          <img class="morty_letters" src="/images/rick-title.png" />
+          <img
+            class="morty_letters"
+            src="/images/rick-title.png"
+            alt="Morty Header Image"
+          />
           <input-character-searcher />
         </div>
       </template>
     </q-parallax>
+    <!-- header y buscador -->
 
+    <!-- filtrado de generos -->
     <div class="tabs-section">
       <tabs-filter-character />
     </div>
+    <!-- filtrado de generos -->
 
-    <!-- <div class="tabs-section">
-      <tabs-filter-character />
-    </div> -->
+    <!-- body : cartas -->
+    <div class="body">
+      <div class="flex flex-center card_section">
+        <div class="row container">
+          <div class="col-xs-12 col-sm-12 col-md-12 column_card">
+            <show-favorites />
+          </div>
 
-    <div class="flex flex-center card_section">
-      <div class="row container">
-        <div
-          v-for="character in rickAndMortyCharacters"
-          :key="character.id"
-          class="col-xs-12 col-sm-12 col-md-4 column_card"
-        >
-          <small-home-card :character="character" @isSelected="onIsSelected" />
+          <div
+            v-for="character in rickAndMortyCharacters"
+            :key="character.id"
+            class="col-xs-12 col-sm-12 col-md-4 column_card"
+          >
+            <small-home-card
+              :character="character"
+              @is-selected="onIsSelected"
+            />
+          </div>
         </div>
       </div>
     </div>
+    <!-- body : cartas -->
 
+    <!-- footer -->
+    <q-parallax :height="140">
+      <template v-slot:media>
+        <img src="/images/footer.png" lt="Morty footer" />
+      </template>
+    </q-parallax>
+    <!-- footer -->
+
+    <!-- loading -->
     <q-circular-progress
       v-if="loading"
       indeterminate
@@ -48,6 +72,7 @@
       color="primary"
       class="q-ma-md"
     />
+    <!-- loading -->
   </q-page>
 </template>
 
@@ -60,6 +85,7 @@ import CharacterDetailsInfoContent from "src/components/CharacterDetailsInfoCont
 import InputCharacterSearcher from "src/components/InputCharacterSearcher.vue";
 import SmallHomeCard from "src/components/SmallHomeCard.vue";
 import TabsFilterCharacter from "src/components/TabsFilterCharacter.vue";
+import ShowFavorites from "src/components/ShowFavorites.vue";
 
 export default defineComponent({
   name: "HomePage",
@@ -67,6 +93,7 @@ export default defineComponent({
     InputCharacterSearcher,
     SmallHomeCard,
     TabsFilterCharacter,
+    ShowFavorites,
   },
   setup() {
     const $q = useQuasar();
