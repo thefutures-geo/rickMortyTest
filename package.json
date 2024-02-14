@@ -1,0 +1,49 @@
+{
+  "name": "rick-and-morty",
+  "version": "0.0.1",
+  "description": "App for test",
+  "productName": "Rick and Morty App",
+  "author": "Georgette <georgette@nextreality.digital>",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue ./",
+    "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test": "echo \"See package.json => scripts for available tests.\" && exit 0",
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "test:e2e": "cross-env NODE_ENV=test start-test \"quasar dev\" http-get://127.0.0.1:8080 \"cypress open --e2e\"",
+    "test:e2e:ci": "cross-env NODE_ENV=test start-test \"quasar dev\" http-get://127.0.0.1:8080 \"cypress run --e2e\"",
+    "test:component": "cross-env NODE_ENV=test cypress open --component",
+    "test:component:ci": "cross-env NODE_ENV=test cypress run --component"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.4",
+    "axios": "^1.2.1",
+    "jenesius-vue-modal": "^1.11.0",
+    "pinia": "^2.1.7",
+    "quasar": "^2.8.0",
+    "vue": "^3.4.18",
+    "vue-router": "^4.0.12",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-private-methods": "^7.23.3",
+    "@quasar/app-vite": "^1.4.3",
+    "@quasar/quasar-app-extension-testing-e2e-cypress": "^5.2.0",
+    "@vue/babel-preset-app": "^5.0.8",
+    "@vue/test-utils": "^2.4.4",
+    "autoprefixer": "^10.4.2",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "postcss": "^8.4.14",
+    "prettier": "^2.5.1",
+    "cypress": "^13.6.2",
+    "eslint-plugin-cypress": "^2.15.1"
+  },
+  "engines": {
+    "node": "^20 || ^18 || ^16",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
