@@ -1,4 +1,4 @@
-![HomePage](/images/readme/homepage.jpg)
+![HomePage](https://github.com/thefutures-geo/rickMortyTest/blob/master/public/images/readme/homepage.jpg)
 
 # Rick and Morty App (rick-and-morty)
 
@@ -24,12 +24,14 @@ quasar dev
 yarn test:component
 ```
 
-But wait!
+**But wait!**
 
 Currently, there aren't many unit tests, all thanks to Pinia and its escapades with Quasar and Cypress, causing quite the headache for the developer!
 Alas, accessing the context of the utilized store proved to be quite the conundrum, leaving only one properly tested file. My apologies!
 
--That's what happens when tests are left to the very last minute!-
+**-That's what happens when tests are left to the very last minute!-**
+	
+
 
 ### Lint the files
 
